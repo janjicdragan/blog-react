@@ -7,8 +7,8 @@ async function get() {
   return await fetchData<Post[]>('get', url);
 }
 
-async function getPaginated(page: number) {
-  const url = `${API_BASE_URL}/posts?_page=${page}`;
+async function getPaginated(pageNumber: number, pageLimit: number) {
+  const url = `${API_BASE_URL}/posts?_page=${pageNumber}&_limit=${pageLimit}`;
   return await fetchData<Post[]>('get', url);
 }
 

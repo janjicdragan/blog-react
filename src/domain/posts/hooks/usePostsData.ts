@@ -5,26 +5,21 @@ import { usePagination } from '../../../shared/components/pagination/hooks/usePa
 
 export const usePostsData = () => {
   const [posts, setPosts] = useState<Post[]>([]);
-  const { currentPage, nextPage, previousPage } = usePagination();
-
-  const getPosts = async () => {
-    const posts = await PostsService.get();
-    setPosts(posts);
-  };
+  const { currentPage, pageLimit, nextPage, previousPage } = usePagination();
 
   const getFirstPostsPage = async () => {
-    const posts = await PostsService.getPaginated(1);
+    const posts = await PostsService.getPaginated(1, pageLimit);
     setPosts(posts);
   };
 
   const getNextPostsPage = async () => {
-    const posts = await PostsService.getPaginated(currentPage + 1);
+    const posts = await PostsService.getPaginated(currentPage + 1, pageLimit);
     setPosts(posts);
     nextPage();
   };
 
   const getPreviousPostsPage = async () => {
-    const posts = await PostsService.getPaginated(currentPage - 1);
+    const posts = await PostsService.getPaginated(currentPage - 1, pageLimit);
     setPosts(posts);
     previousPage();
   };
