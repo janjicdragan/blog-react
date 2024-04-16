@@ -5,9 +5,10 @@ interface PostProps {
   id: number;
   title: string;
   body: string;
+  children?: React.ReactNode;
 }
 
-const Post = ({ userId, id, title, body }: PostProps) => {
+const Post = ({ userId, id, title, body, children }: PostProps) => {
   return (
     <div className={styles.post}>
       <div className={styles.header}>
@@ -17,6 +18,7 @@ const Post = ({ userId, id, title, body }: PostProps) => {
       <div className={styles.body}>
         <p>{body}</p>
       </div>
+      {children && <>{children}</>}
     </div>
   );
 };
