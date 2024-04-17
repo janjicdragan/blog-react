@@ -1,5 +1,5 @@
 import { SharedProps } from '../../../domain/posts/types/interfaces';
-import styles from './pagination.module.css';
+import styles from './Pagination.module.css';
 
 interface PaginationProps extends SharedProps {
   prevBtnHandler: () => void;

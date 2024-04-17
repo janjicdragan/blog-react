@@ -1,7 +1,7 @@
 import { SharedProps } from '../../../posts/types/interfaces';
 import { useCommentsData } from '../../hooks/useCommentsData';
-import Comment from '../comment/comment';
-import styles from './comments.module.css';
+import Comment from '../Comment/Comment';
+import styles from './Comments.module.css';
 
 interface CommentsProps extends SharedProps {
   associatedPostId: number;

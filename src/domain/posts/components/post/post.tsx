@@ -1,5 +1,5 @@
 import { SharedProps } from '../../types/interfaces';
-import styles from './post.module.css';
+import styles from './Post.module.css';
 
 interface PostProps extends SharedProps {
   id: number;

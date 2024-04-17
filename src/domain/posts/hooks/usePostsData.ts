@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Post } from '../types/interfaces';
 import { PostsService } from '../service/posts.service';
-import { usePagination } from '../../../shared/components/pagination/hooks/usePagination';
+import { usePagination } from '../../../shared/components/Pagination/hooks/usePagination';
 import { useUsersData } from '../../users/hooks/useUsersData';
 import { useDebounce } from './useDebounce';
 

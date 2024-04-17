@@ -1,6 +1,6 @@
-import PostsList from '../components/postsList/postsList';
-import { SharedProps } from '../types/interfaces';
-import styles from './postsPage.module.css';
+import PostsList from '../../components/PostsList/PostsList';
+import { SharedProps } from '../../types/interfaces';
+import styles from './PostsPage.module.css';
 
 interface PostsPageProps extends SharedProps {}
 

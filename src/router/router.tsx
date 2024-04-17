@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import PostsPage from '../domain/posts/pages/postsPage';
-import PostDetails from '../domain/posts/pages/postDetails';
+import PostsPage from '../domain/posts/pages/PostsPage/PostsPage';
+import PostDetails from '../domain/posts/pages/PostDetails/PostDetails';
 import { INDEX, POSTS, POST } from './router.config';
-import NotFound from '../shared/pages/notFound';
+import NotFound from '../shared/pages/NotFound';
 import { SharedProps } from '../domain/posts/types/interfaces';
 
 interface GlobalRouterProps extends SharedProps {}

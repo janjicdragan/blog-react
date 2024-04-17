@@ -1,10 +1,10 @@
-import Pagination from '../../../../shared/components/pagination/pagination';
-import Comments from '../../../comments/components/comments/comments';
+import Pagination from '../../../../shared/components/Pagination/Pagination';
+import Comments from '../../../comments/components/Comments/Comments';
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostsData } from '../../hooks/usePostsData';
-import Post from '../post/post';
+import Post from '../Post/Post';
 import { usePosts } from '../../hooks/usePosts';
-import TextInput from '../../../../shared/components/textInput/textInput';
+import TextInput from '../../../../shared/components/TextInput/TextInput';
 import { SharedProps } from '../../types/interfaces';
 
 interface PostsListProps extends SharedProps {}

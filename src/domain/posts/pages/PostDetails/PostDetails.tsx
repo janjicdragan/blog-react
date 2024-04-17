@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import Comments from '../../comments/components/comments/comments';
-import { useUsersData } from '../../users/hooks/useUsersData';
-import Post from '../components/post/post';
-import { usePostData } from '../hooks/usePostData';
-import { POSTS } from '../../../router/router.config';
-import { SharedProps } from '../types/interfaces';
+import Comments from '../../../comments/components/Comments/Comments';
+import { useUsersData } from '../../../users/hooks/useUsersData';
+import Post from '../../components/Post/Post';
+import { usePostData } from '../../hooks/usePostData';
+import { POSTS } from '../../../../router/router.config';
+import { SharedProps } from '../../types/interfaces';
 
 interface PostDetails extends SharedProps {}
 
