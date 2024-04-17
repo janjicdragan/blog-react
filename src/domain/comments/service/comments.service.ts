@@ -7,12 +7,18 @@ async function get() {
   return await fetchData<Comment[]>('get', url);
 }
 
-async function getCommentByPostId(postId: number) {
+async function getCommentsByPostId(postId: number) {
   const url = `${API_BASE_URL}/comments?postId=${postId}`;
+  return await fetchData<Comment[]>('get', url);
+}
+
+async function getLimitedCommentsByPostId(postId: number, limit: number) {
+  const url = `${API_BASE_URL}/comments?postId=${postId}&_limit=${limit}`;
   return await fetchData<Comment[]>('get', url);
 }
 
 export const CommentsService = {
   get,
-  getCommentByPostId,
+  getCommentsByPostId,
+  getLimitedCommentsByPostId,
 };

@@ -6,6 +6,7 @@ import Post from '../Post/Post';
 import { usePosts } from '../../hooks/usePosts';
 import TextInput from '../../../../shared/components/TextInput/TextInput';
 import { SharedProps } from '../../types/interfaces';
+import styles from './PostsList.module.css';
 
 interface PostsListProps extends SharedProps {}
 
@@ -35,7 +36,14 @@ const PostsList = ({ helloMessage }: PostsListProps) => {
           onPostClick={onPostClick}
           helloMessage={helloMessage}
         >
-          <Comments associatedPostId={post.id} helloMessage={helloMessage} />
+          <Comments
+            associatedPostId={post.id}
+            showAllComments={false}
+            helloMessage={helloMessage}
+          />
+          <div className={styles.moreDetails}>
+            Click on post for more details
+          </div>
         </Post>
       );
     });

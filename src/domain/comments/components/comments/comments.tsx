@@ -5,10 +5,15 @@ import styles from './Comments.module.css';
 
 interface CommentsProps extends SharedProps {
   associatedPostId: number;
+  showAllComments: boolean;
 }
 
-const Comments = ({ associatedPostId, helloMessage }: CommentsProps) => {
-  const { comments } = useCommentsData(associatedPostId);
+const Comments = ({
+  associatedPostId,
+  showAllComments,
+  helloMessage,
+}: CommentsProps) => {
+  const { comments } = useCommentsData(associatedPostId, showAllComments);
   if (comments.length === 0)
     return <div className={styles.noComments}>No added comments yet.</div>;
 

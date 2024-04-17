@@ -33,7 +33,11 @@ const PostDetails = ({ helloMessage }: PostDetails) => {
         helloMessage={helloMessage}
       >
         <Link to={POSTS}>Return to posts page</Link>
-        <Comments associatedPostId={post.id} helloMessage={helloMessage} />
+        <Comments
+          associatedPostId={post.id}
+          showAllComments={true}
+          helloMessage={helloMessage}
+        />
       </Post>
     </div>
   );
