@@ -1,5 +1,6 @@
 import { UserProvider } from './domain/users/context/usersContext';
 import GlobalRouter from './router/Router';
+import './App.css';
 
 function App() {
   const helloMessage: string = 'Hello from';
