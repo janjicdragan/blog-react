@@ -17,14 +17,19 @@ async function getPaginated(pageNumber: number, pageLimit: number) {
   return await fetchData<Post[]>('get', url);
 }
 
-async function getByUserId(userId: number) {
-  const url = `${API_BASE_URL}/posts?userId=${userId}`;
+async function getByUserIds(userIds: number[]) {
+  let url = `${API_BASE_URL}/posts?`;
+  userIds.forEach((userId, index) => {
+    const queryParameter =
+      index === 0 ? `userId=${userId}` : `&userId=${userId}`;
+    url += queryParameter;
+  });
   return await fetchData<Post[]>('get', url);
 }
 
 export const PostsService = {
   get,
   getById,
-  getByUserId,
+  getByUserIds,
   getPaginated,
 };

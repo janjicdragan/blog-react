@@ -4,10 +4,18 @@ import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostsData } from '../../hooks/usePostsData';
 import Post from '../post/post';
 import { usePosts } from '../../hooks/usePosts';
+import TextInput from '../../../../shared/components/textInput/textInput';
 
 const PostsList = () => {
-  const { posts, currentPage, getNextPostsPage, getPreviousPostsPage } =
-    usePostsData();
+  const {
+    posts,
+    isFiltering,
+    clearFiltering,
+    currentPage,
+    getNextPostsPage,
+    getPreviousPostsPage,
+    debouncedFilterPostsByUserName,
+  } = usePostsData();
   const { getUserById } = useUsersData();
   const { onPostClick } = usePosts();
 
@@ -31,13 +39,20 @@ const PostsList = () => {
 
   return (
     <div>
-      {renderPosts()}
-      <Pagination
-        prevBtnHandler={getPreviousPostsPage}
-        nextBtnHandler={getNextPostsPage}
-        isPrevBtnDisabled={currentPage <= 1}
-        isNextBtnDisabled={posts.length <= 0}
+      <TextInput
+        onInputChange={debouncedFilterPostsByUserName}
+        onClearBtnClick={clearFiltering}
+        placeholder="Search posts based on user name"
       />
+      {renderPosts()}
+      {!isFiltering && (
+        <Pagination
+          prevBtnHandler={getPreviousPostsPage}
+          nextBtnHandler={getNextPostsPage}
+          isPrevBtnDisabled={currentPage <= 1}
+          isNextBtnDisabled={posts.length <= 0}
+        />
+      )}
     </div>
   );
 };
