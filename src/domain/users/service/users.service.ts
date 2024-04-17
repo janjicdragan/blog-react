@@ -8,7 +8,7 @@ async function get() {
 }
 
 async function getById(id: number) {
-  const url = `${API_BASE_URL}/users?id=${id}`;
+  const url = `${API_BASE_URL}/users/${id}`;
   return await fetchData<User>('get', url);
 }
 

@@ -7,6 +7,11 @@ async function get() {
   return await fetchData<Post[]>('get', url);
 }
 
+async function getById(postId: number) {
+  const url = `${API_BASE_URL}/posts/${postId}`;
+  return await fetchData<Post>('get', url);
+}
+
 async function getPaginated(pageNumber: number, pageLimit: number) {
   const url = `${API_BASE_URL}/posts?_page=${pageNumber}&_limit=${pageLimit}`;
   return await fetchData<Post[]>('get', url);
@@ -19,6 +24,7 @@ async function getByUserId(userId: number) {
 
 export const PostsService = {
   get,
+  getById,
   getByUserId,
   getPaginated,
 };
