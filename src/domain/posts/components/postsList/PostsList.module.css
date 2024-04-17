@@ -1,5 +1,16 @@
+.postsListContainer {
+  margin: 0px 20px;
+}
+
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .moreDetails {
   text-align: center;
   color: gray;
   font-style: italic;
+  text-decoration: underline;
 }

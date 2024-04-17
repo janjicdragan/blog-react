@@ -1,18 +1,32 @@
-import Pagination from '../../../../shared/components/Pagination/Pagination';
-import Comments from '../../../comments/components/Comments/Comments';
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostsData } from '../../hooks/usePostsData';
-import Post from '../Post/Post';
 import { usePosts } from '../../hooks/usePosts';
-import TextInput from '../../../../shared/components/TextInput/TextInput';
 import { SharedProps } from '../../types/interfaces';
 import styles from './PostsList.module.css';
+import Loader from '../../../../shared/components/Loader/Loader';
+import { lazy } from 'react';
+
+const ErrorComponent = lazy(
+  () => import('../../../../shared/components/Error/ErrorComponent'),
+);
+const TextInput = lazy(
+  () => import('../../../../shared/components/TextInput/TextInput'),
+);
+const Pagination = lazy(
+  () => import('../../../../shared/components/Pagination/Pagination'),
+);
+const Post = lazy(() => import('../Post/Post'));
+const Comments = lazy(
+  () => import('../../../comments/components/Comments/Comments'),
+);
 
 interface PostsListProps extends SharedProps {}
 
 const PostsList = ({ helloMessage }: PostsListProps) => {
   const {
     posts,
+    isLoading,
+    error,
     isFiltering,
     clearFiltering,
     currentPage,
@@ -22,6 +36,28 @@ const PostsList = ({ helloMessage }: PostsListProps) => {
   } = usePostsData();
   const { getUserById } = useUsersData();
   const { onPostClick } = usePosts();
+  console.log(`${helloMessage} ${PostsList.name}`);
+
+  if (isLoading) return <Loader />;
+
+  if (error)
+    return (
+      <ErrorComponent
+        render={() => {
+          return <div className={styles.error}>{error}</div>;
+        }}
+      />
+    );
+
+  if (!posts || posts?.length === 0) {
+    return (
+      <ErrorComponent
+        render={() => {
+          return <div className={styles.error}>No posts available.</div>;
+        }}
+      />
+    );
+  }
 
   const renderPosts = () => {
     return posts?.map((post) => {
@@ -49,16 +85,15 @@ const PostsList = ({ helloMessage }: PostsListProps) => {
     });
   };
 
-  console.log(`${helloMessage} ${PostsList.name}`);
   return (
-    <div>
+    <div className={styles.postsListContainer}>
       <TextInput
         onInputChange={debouncedFilterPostsByUserName}
         onClearBtnClick={clearFiltering}
         placeholder="Search posts based on user name"
         helloMessage={helloMessage}
       />
-      {renderPosts()}
+      <div className={styles.postsContainer}>{renderPosts()}</div>
       {!isFiltering && (
         <Pagination
           prevBtnHandler={getPreviousPostsPage}

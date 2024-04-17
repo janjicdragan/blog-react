@@ -1,30 +1,61 @@
 import { Link } from 'react-router-dom';
-import Comments from '../../../comments/components/Comments/Comments';
 import { useUsersData } from '../../../users/hooks/useUsersData';
-import Post from '../../components/Post/Post';
 import { usePostData } from '../../hooks/usePostData';
 import { POSTS } from '../../../../router/router.config';
 import { SharedProps } from '../../types/interfaces';
+import ErrorComponent from '../../../../shared/components/Error/ErrorComponent';
+import { lazy } from 'react';
+import Loader from '../../../../shared/components/Loader/Loader';
+import styles from './PostDetails.module.css';
+
+const Post = lazy(() => import('../../components/Post/Post'));
+const Comments = lazy(
+  () => import('../../../comments/components/Comments/Comments'),
+);
 
 interface PostDetails extends SharedProps {}
 
 const PostDetails = ({ helloMessage }: PostDetails) => {
-  const { post } = usePostData();
+  const { post, isLoading, error } = usePostData();
   const { getUserById } = useUsersData();
+  console.log(`${helloMessage} ${PostDetails.name}`);
 
-  if (!post)
+  if (isLoading) return <Loader />;
+
+  if (error) {
     return (
-      <div>
-        <div>Post with specified ID does not exist</div>
-        <Link to={POSTS}>Return to posts page</Link>
-      </div>
+      <ErrorComponent
+        render={() => {
+          return (
+            <div>
+              <div>{error}</div>
+              <Link to={POSTS}>Return to posts page</Link>
+            </div>
+          );
+        }}
+      />
     );
+  }
+
+  if (!post) {
+    return (
+      <ErrorComponent
+        render={() => {
+          return (
+            <div>
+              <div>Post with specified ID does not exist</div>
+              <Link to={POSTS}>Return to posts page</Link>
+            </div>
+          );
+        }}
+      />
+    );
+  }
 
   const postUser = getUserById(post.userId);
 
-  console.log(`${helloMessage} ${PostDetails.name}`);
   return (
-    <div>
+    <div className={styles.container}>
       <Post
         id={post.id}
         userName={postUser?.name}

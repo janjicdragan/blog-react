@@ -5,12 +5,7 @@ interface ErrorComponentProps {
 }
 
 const ErrorComponent = ({ render }: ErrorComponentProps) => {
-  return (
-    <div className={styles.container}>
-      <div>Error occured</div>
-      {render()}
-    </div>
-  );
+  return <div className={styles.container}>{render()}</div>;
 };
 
 export default ErrorComponent;

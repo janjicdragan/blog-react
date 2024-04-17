@@ -11,7 +11,7 @@
   position: absolute;
   height: 100%;
   width: 30%;
-  background-color: #3498db;
+  background-color: gray;
   animation: slide 2s linear infinite;
 }
 

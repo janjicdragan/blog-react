@@ -7,10 +7,21 @@ import { convertToNumber } from '../../../shared/utlis';
 export const usePostData = () => {
   const { postId } = useParams<{ postId?: string }>();
   const [post, setPost] = useState<Post>();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>();
 
   const getPost = async (postId: number) => {
-    const post = await PostsService.getById(postId);
-    setPost(post);
+    setIsLoading(true);
+    try {
+      const post = await PostsService.getById(postId);
+      setPost(post);
+    } catch (error) {
+      setError(
+        'Error occured while retrieving post data. Please try again later.',
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -20,5 +31,7 @@ export const usePostData = () => {
 
   return {
     post,
+    isLoading,
+    error,
   };
 };
