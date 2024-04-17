@@ -37,7 +37,7 @@ const TextInput = ({
         className={styles.input}
         placeholder={placeholder}
       />
-      <button onClick={handleClearBtnClick}>Restart</button>
+      <button onClick={handleClearBtnClick}>Clear</button>
     </div>
   );
 };
