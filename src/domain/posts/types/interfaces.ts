@@ -12,3 +12,9 @@ export interface Comment {
   email: string;
   body: string;
 }
+export interface User {
+  id: number;
+  name: string;
+  userName: string;
+  email: string;
+}
