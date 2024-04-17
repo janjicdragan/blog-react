@@ -5,7 +5,7 @@ import {
   useEffect,
   ReactNode,
 } from 'react';
-import { User } from '../../posts/types/interfaces';
+import { SharedProps, User } from '../../posts/types/interfaces';
 import { UsersService } from '../service/users.service';
 
 interface UserContextType {
@@ -14,7 +14,7 @@ interface UserContextType {
   error: string | null;
 }
 
-interface UserProviderProps {
+interface UserProviderProps extends SharedProps {
   children: ReactNode;
 }
 
@@ -28,7 +28,7 @@ export function useUsers() {
   return context;
 }
 
-export function UserProvider({ children }: UserProviderProps) {
+export function UserProvider({ children, helloMessage }: UserProviderProps) {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -49,6 +49,7 @@ export function UserProvider({ children }: UserProviderProps) {
     getUsers();
   }, []);
 
+  console.log(`${helloMessage} ${UserProvider.name}`);
   return (
     <UserContext.Provider value={{ users, loading, error }}>
       {children}

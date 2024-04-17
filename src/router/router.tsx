@@ -3,15 +3,28 @@ import PostsPage from '../domain/posts/pages/postsPage';
 import PostDetails from '../domain/posts/pages/postDetails';
 import { INDEX, POSTS, POST } from './router.config';
 import NotFound from '../shared/pages/notFound';
+import { SharedProps } from '../domain/posts/types/interfaces';
 
-const GlobalRouter = () => {
+interface GlobalRouterProps extends SharedProps {}
+
+const GlobalRouter = ({ helloMessage }: GlobalRouterProps) => {
+  console.log(`${helloMessage} ${GlobalRouter.name}`);
   return (
     <BrowserRouter>
       <Routes>
-        <Route path={POSTS} element={<PostsPage />} />
-        <Route path={POST} element={<PostDetails />} />
-        <Route path={INDEX} element={<PostsPage />} />
-        <Route path="*" element={<NotFound />} />
+        <Route
+          path={POSTS}
+          element={<PostsPage helloMessage={helloMessage} />}
+        />
+        <Route
+          path={POST}
+          element={<PostDetails helloMessage={helloMessage} />}
+        />
+        <Route
+          path={INDEX}
+          element={<PostsPage helloMessage={helloMessage} />}
+        />
+        <Route path="*" element={<NotFound helloMessage={helloMessage} />} />
       </Routes>
     </BrowserRouter>
   );

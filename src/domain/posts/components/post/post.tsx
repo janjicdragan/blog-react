@@ -1,6 +1,7 @@
+import { SharedProps } from '../../types/interfaces';
 import styles from './post.module.css';
 
-interface PostProps {
+interface PostProps extends SharedProps {
   id: number;
   userName?: string;
   title: string;
@@ -16,7 +17,9 @@ const Post = ({
   body,
   onPostClick,
   children,
+  helloMessage,
 }: PostProps) => {
+  console.log(`${helloMessage} ${Post.name}`);
   return (
     <div
       data-post-id={id}

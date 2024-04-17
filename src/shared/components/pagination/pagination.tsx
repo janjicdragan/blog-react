@@ -1,6 +1,7 @@
+import { SharedProps } from '../../../domain/posts/types/interfaces';
 import styles from './pagination.module.css';
 
-interface PaginationProps {
+interface PaginationProps extends SharedProps {
   prevBtnHandler: () => void;
   nextBtnHandler: () => void;
   isPrevBtnDisabled: boolean;
@@ -12,7 +13,9 @@ const Pagination = ({
   nextBtnHandler,
   isPrevBtnDisabled,
   isNextBtnDisabled,
+  helloMessage,
 }: PaginationProps) => {
+  console.log(`${helloMessage} ${Pagination.name}`);
   return (
     <div className={styles.pagination}>
       <button onClick={prevBtnHandler} disabled={isPrevBtnDisabled}>

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import styles from './textInput.module.css'; // Import CSS module
+import { SharedProps } from '../../../domain/posts/types/interfaces';
 
-interface InputProps {
+interface InputProps extends SharedProps {
   onInputChange: (value: string) => void;
   onClearBtnClick: () => void;
   placeholder?: string;
@@ -11,6 +12,7 @@ const TextInput = ({
   onInputChange,
   onClearBtnClick,
   placeholder,
+  helloMessage,
 }: InputProps) => {
   const [inputValue, setInputValue] = useState('');
 
@@ -25,6 +27,7 @@ const TextInput = ({
     setInputValue('');
   };
 
+  console.log(`${helloMessage} ${TextInput.name}`);
   return (
     <div className={styles.container}>
       <input

@@ -4,8 +4,11 @@ import { useUsersData } from '../../users/hooks/useUsersData';
 import Post from '../components/post/post';
 import { usePostData } from '../hooks/usePostData';
 import { POSTS } from '../../../router/router.config';
+import { SharedProps } from '../types/interfaces';
 
-const PostDetails = () => {
+interface PostDetails extends SharedProps {}
+
+const PostDetails = ({ helloMessage }: PostDetails) => {
   const { post } = usePostData();
   const { getUserById } = useUsersData();
 
@@ -19,6 +22,7 @@ const PostDetails = () => {
 
   const postUser = getUserById(post.userId);
 
+  console.log(`${helloMessage} ${PostDetails.name}`);
   return (
     <div>
       <Post
@@ -26,9 +30,10 @@ const PostDetails = () => {
         userName={postUser?.name}
         body={post.body}
         title={post.title}
+        helloMessage={helloMessage}
       >
         <Link to={POSTS}>Return to posts page</Link>
-        <Comments associatedPostId={post.id} />
+        <Comments associatedPostId={post.id} helloMessage={helloMessage} />
       </Post>
     </div>
   );

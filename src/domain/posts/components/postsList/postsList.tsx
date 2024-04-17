@@ -5,8 +5,11 @@ import { usePostsData } from '../../hooks/usePostsData';
 import Post from '../post/post';
 import { usePosts } from '../../hooks/usePosts';
 import TextInput from '../../../../shared/components/textInput/textInput';
+import { SharedProps } from '../../types/interfaces';
 
-const PostsList = () => {
+interface PostsListProps extends SharedProps {}
+
+const PostsList = ({ helloMessage }: PostsListProps) => {
   const {
     posts,
     isFiltering,
@@ -30,19 +33,22 @@ const PostsList = () => {
           title={post.title}
           body={post.body}
           onPostClick={onPostClick}
+          helloMessage={helloMessage}
         >
-          <Comments associatedPostId={post.id} />
+          <Comments associatedPostId={post.id} helloMessage={helloMessage} />
         </Post>
       );
     });
   };
 
+  console.log(`${helloMessage} ${PostsList.name}`);
   return (
     <div>
       <TextInput
         onInputChange={debouncedFilterPostsByUserName}
         onClearBtnClick={clearFiltering}
         placeholder="Search posts based on user name"
+        helloMessage={helloMessage}
       />
       {renderPosts()}
       {!isFiltering && (
@@ -51,6 +57,7 @@ const PostsList = () => {
           nextBtnHandler={getNextPostsPage}
           isPrevBtnDisabled={currentPage <= 1}
           isNextBtnDisabled={posts.length <= 0}
+          helloMessage={helloMessage}
         />
       )}
     </div>
