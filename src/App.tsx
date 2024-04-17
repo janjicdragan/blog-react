@@ -1,13 +1,11 @@
-import Posts from './domain/posts/pages/postsPage';
 import { UserProvider } from './domain/users/context/usersContext';
+import GlobalRouter from './router/router';
 
 function App() {
   return (
-    <>
-      <UserProvider>
-        <Posts />
-      </UserProvider>
-    </>
+    <UserProvider>
+      <GlobalRouter />
+    </UserProvider>
   );
 }
 
