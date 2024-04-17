@@ -21,7 +21,7 @@ const PostsList = () => {
 
   const renderPosts = () => {
     return posts?.map((post) => {
-      const postUser = getUserById(post.id);
+      const postUser = getUserById(post.userId);
       return (
         <Post
           key={post.title}
