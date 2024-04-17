@@ -3,11 +3,13 @@ import Comments from '../../../comments/components/comments/comments';
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostsData } from '../../hooks/usePostsData';
 import Post from '../post/post';
+import { usePosts } from '../../hooks/usePosts';
 
 const PostsList = () => {
   const { posts, currentPage, getNextPostsPage, getPreviousPostsPage } =
     usePostsData();
   const { getUserById } = useUsersData();
+  const { onPostClick } = usePosts();
 
   const renderPosts = () => {
     return posts?.map((post) => {
@@ -15,9 +17,11 @@ const PostsList = () => {
       return (
         <Post
           key={post.title}
+          id={post.id}
           userName={postUser?.name}
           title={post.title}
           body={post.body}
+          onPostClick={onPostClick}
         >
           <Comments associatedPostId={post.id} />
         </Post>
