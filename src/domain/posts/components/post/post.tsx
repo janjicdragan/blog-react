@@ -1,19 +1,18 @@
 import styles from './post.module.css';
 
 interface PostProps {
-  userId: number;
-  id: number;
+  userName?: string;
   title: string;
   body: string;
   children?: React.ReactNode;
 }
 
-const Post = ({ userId, id, title, body, children }: PostProps) => {
+const Post = ({ userName, title, body, children }: PostProps) => {
   return (
     <div className={styles.post}>
       <div className={styles.header}>
         <h2>{title}</h2>
-        <p>Author: User {userId}</p>
+        <p>Author: {userName ?? 'Anonymous'}</p>
       </div>
       <div className={styles.body}>
         <p>{body}</p>
