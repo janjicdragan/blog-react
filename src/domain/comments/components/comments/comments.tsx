@@ -1,7 +1,13 @@
+import { lazy } from 'react';
+import Loader from '../../../../shared/components/Loader/Loader';
 import { SharedProps } from '../../../posts/types/interfaces';
 import { useCommentsData } from '../../hooks/useCommentsData';
-import Comment from '../Comment/Comment';
 import styles from './Comments.module.css';
+
+const Comment = lazy(() => import('./../Comment/Comment'));
+const ErrorComponent = lazy(
+  () => import('./../../../../shared/components/Error/ErrorComponent'),
+);
 
 interface CommentsProps extends SharedProps {
   associatedPostId: number;
@@ -13,25 +19,43 @@ const Comments = ({
   showAllComments,
   helloMessage,
 }: CommentsProps) => {
-  const { comments } = useCommentsData(associatedPostId, showAllComments);
-  if (comments.length === 0)
-    return <div className={styles.noComments}>No added comments yet.</div>;
-
+  const { comments, isLoading, error } = useCommentsData(
+    associatedPostId,
+    showAllComments,
+  );
   console.log(`${helloMessage} ${Comments.name}`);
+
+  if (isLoading) return <Loader />;
+
+  if (error)
+    return (
+      <ErrorComponent
+        render={() => {
+          return <div className={styles.error}>{error}</div>;
+        }}
+      />
+    );
+
   return (
     <div className={styles.container}>
-      <div className={styles.containerHeader}>Comments: </div>
-      {comments.map((comment) => {
-        return (
-          <Comment
-            key={comment.name}
-            name={comment.name}
-            body={comment.body}
-            email={comment.email}
-            helloMessage={helloMessage}
-          />
-        );
-      })}
+      {comments.length === 0 ? (
+        <div className={styles.noComments}>No added comments yet.</div>
+      ) : (
+        <>
+          <div className={styles.containerHeader}>Comments: </div>
+          {comments.map((comment) => {
+            return (
+              <Comment
+                key={comment.name}
+                name={comment.name}
+                body={comment.body}
+                email={comment.email}
+                helloMessage={helloMessage}
+              />
+            );
+          })}
+        </>
+      )}
     </div>
   );
 };
