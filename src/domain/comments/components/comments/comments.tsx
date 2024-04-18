@@ -5,9 +5,9 @@ import styles from './Comments.module.css';
 import { SharedProps } from '../../../../shared/types/interfaces';
 import withSuspense from '../../../../shared/components/withSuspense/withSuspense';
 
-const Comment = withSuspense(lazy(() => import('./../Comment/Comment')));
+const Comment = withSuspense(lazy(() => import('../Comment/Comment')));
 const ErrorComponent = withSuspense(
-  lazy(() => import('./../../../../shared/components/Error/ErrorComponent')),
+  lazy(() => import('../../../../shared/components/Error/ErrorComponent')),
 );
 
 interface CommentsProps extends SharedProps {
