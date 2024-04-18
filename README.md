@@ -1,30 +1,48 @@
-# React + TypeScript + Vite
+# Blog-React TypeScript Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Technologies Used
 
-Currently, two official plugins are available:
+- **React**: A JavaScript library for building user interfaces.
+- **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
+- **Vite**: A modern frontend build tool that significantly improves the development experience.
+- **ESLint**: A pluggable and configurable linter tool for identifying and reporting on patterns in JavaScript.
+- **Prettier**: An opinionated code formatter.
+- **React Router**: Declarative routing for React, used to manage navigation from one view to another.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Application Structure
 
-## Expanding the ESLint configuration
+The application contains the following main routes:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- `/posts`: Displays the main page listing all posts.
+- `/posts/{id}`: Displays details for a specific post, where `{id}` is the unique identifier of the post.
+- `/`: Redirects automatically to the `/posts` page.
 
-- Configure the top-level `parserOptions` property like this:
+Other undefined routes will show a "Not Found" page, handling all navigation cases that do not match the existing routes.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Setup and Installation
+
+To get started with this project, clone the repository and follow the steps below:
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start the development server:
+   ```bash
+   npm run dev
+   ```
+   This will start the local server at http://localhost:5173.
+
+## Building for Production
+
+To build the application for production, run the following command:
+
+```bash
+ npm run build
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This command triggers the Vite build process, optimizing and bundling the code for deployment.
+
+## Approximate time needed for building the application
+
+~10 hours
