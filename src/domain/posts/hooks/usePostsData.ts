@@ -5,7 +5,7 @@ import { usePagination } from '../../../shared/components/Pagination/hooks/usePa
 import { useUsersData } from '../../users/hooks/useUsersData';
 import { useDebounce } from './useDebounce';
 
-type TryCatchWrapperCallback = (param?: string) => void;
+type ErrorHandlerCallback = (param?: string) => void;
 
 export const usePostsData = () => {
   const [posts, setPosts] = useState<Post[]>([]);
@@ -17,10 +17,7 @@ export const usePostsData = () => {
   const { filterUsersByName } = useUsersData();
   const { debounce } = useDebounce<string>();
 
-  const tryCatchWrapper = (
-    callback: TryCatchWrapperCallback,
-    value?: string,
-  ) => {
+  const errorHandler = (callback: ErrorHandlerCallback, value?: string) => {
     setIsLoading(true);
     try {
       if (value) callback(value);
@@ -35,14 +32,14 @@ export const usePostsData = () => {
   };
 
   const getFirstPostsPage = async () => {
-    tryCatchWrapper(async () => {
+    errorHandler(async () => {
       const posts = await PostsService.getPaginated(1, pageLimit);
       setPosts(posts);
     });
   };
 
   const getNextPostsPage = async () => {
-    tryCatchWrapper(async () => {
+    errorHandler(async () => {
       const posts = await PostsService.getPaginated(currentPage + 1, pageLimit);
       setPosts(posts);
     });
@@ -51,7 +48,7 @@ export const usePostsData = () => {
   };
 
   const getPreviousPostsPage = async () => {
-    tryCatchWrapper(async () => {
+    errorHandler(async () => {
       const posts = await PostsService.getPaginated(currentPage - 1, pageLimit);
       setPosts(posts);
     });
@@ -60,7 +57,7 @@ export const usePostsData = () => {
   };
 
   const filterPostsByUserName = async (userName: string) => {
-    tryCatchWrapper(async () => {
+    errorHandler(async () => {
       if (userName === '') {
         clearFiltering();
         return;
