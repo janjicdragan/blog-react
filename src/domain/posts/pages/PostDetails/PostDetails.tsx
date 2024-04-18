@@ -33,6 +33,7 @@ const PostDetails = ({ helloMessage }: PostDetails) => {
             </div>
           );
         }}
+        helloMessage={helloMessage}
       />
     );
   }
@@ -48,6 +49,7 @@ const PostDetails = ({ helloMessage }: PostDetails) => {
             </div>
           );
         }}
+        helloMessage={helloMessage}
       />
     );
   }

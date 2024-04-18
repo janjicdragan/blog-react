@@ -46,20 +46,28 @@ const PostsList = ({ helloMessage }: PostsListProps) => {
         render={() => {
           return <div className={styles.error}>{error}</div>;
         }}
+        helloMessage={helloMessage}
       />
     );
 
-  if (!posts || posts?.length === 0) {
+  if (!posts) {
     return (
       <ErrorComponent
         render={() => {
           return <div className={styles.error}>No posts available.</div>;
         }}
+        helloMessage={helloMessage}
       />
     );
   }
 
   const renderPosts = () => {
+    if (posts.length === 0 && isFiltering)
+      return (
+        <div className={styles.error}>
+          No posts found with given search criteria.
+        </div>
+      );
     return posts?.map((post) => {
       const postUser = getUserById(post.userId);
       return (

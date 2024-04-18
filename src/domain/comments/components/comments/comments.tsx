@@ -33,6 +33,7 @@ const Comments = ({
         render={() => {
           return <div className={styles.error}>{error}</div>;
         }}
+        helloMessage={helloMessage}
       />
     );
 
