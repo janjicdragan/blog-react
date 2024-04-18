@@ -1,6 +1,6 @@
 export async function fetchData<T>(method: string, url: string): Promise<T> {
   try {
-    let options: RequestInit = {
+    const options: RequestInit = {
       method: method,
     };
 
