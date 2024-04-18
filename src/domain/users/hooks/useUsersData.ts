@@ -5,19 +5,13 @@ export const useUsersData = () => {
   const { users } = useUsers();
 
   const getUserById = (userId: number): User | undefined => {
-    const matchingUser = users?.find((user) => user.id === userId);
-
-    if (!matchingUser) return;
-
-    return matchingUser;
+    return users?.find((user) => user.id === userId);
   };
 
   const filterUsersByName = (userName: string): User[] => {
-    const filteredUsers = users.filter((user) => {
-      if (user.name.toLowerCase().includes(userName.toLowerCase())) return true;
-    });
-
-    return filteredUsers;
+    return users.filter((user) =>
+      user.name.toLowerCase().includes(userName.toLowerCase()),
+    );
   };
 
   return { getUserById, filterUsersByName };
