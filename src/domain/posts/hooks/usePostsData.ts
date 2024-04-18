@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Post } from '../types/interfaces';
 import { PostsService } from '../service/posts.service';
 import { usePagination } from '../../../shared/components/Pagination/hooks/usePagination';
@@ -44,12 +44,12 @@ export const usePostsData = (): UsePostsData => {
     }
   };
 
-  const getFirstPostsPage = async () => {
+  const getFirstPostsPage = useCallback(async () => {
     errorHandler(async () => {
       const posts = await PostsService.getPaginated(1, pageLimit);
       setPosts(posts);
     });
-  };
+  }, [pageLimit]);
 
   const getNextPostsPage = async () => {
     errorHandler(async () => {
@@ -103,7 +103,7 @@ export const usePostsData = (): UsePostsData => {
 
   useEffect(() => {
     getFirstPostsPage();
-  }, []);
+  }, [getFirstPostsPage]);
 
   return {
     posts,

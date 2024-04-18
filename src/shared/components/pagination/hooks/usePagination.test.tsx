@@ -2,7 +2,13 @@ import { usePagination } from './usePagination';
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 
-function TestPaginationComponent({ initialPage = 1, initialLimit = 10 }) {
+function TestPaginationComponent({
+  initialPage = 1,
+  initialLimit = 10,
+}: {
+  initialPage?: number;
+  initialLimit?: number;
+}) {
   const { currentPage, pageLimit, setPageLimit, nextPage, previousPage } =
     usePagination(initialPage, initialLimit);
 

@@ -37,7 +37,7 @@ export const useCommentsData = (
 
   useEffect(() => {
     getCommentsByPostId(postId, showAllComments);
-  }, [postId]);
+  }, [postId, showAllComments]);
 
   return { comments, isLoading, error };
 };
