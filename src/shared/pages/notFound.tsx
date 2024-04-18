@@ -4,7 +4,7 @@ import { SharedProps } from '../types/interfaces';
 
 interface NotFoundPageProps extends SharedProps {}
 
-const NotFound = ({ helloMessage }: NotFoundPageProps) => {
+const NotFound = ({ helloMessage }: NotFoundPageProps): JSX.Element => {
   console.log(`${helloMessage} ${NotFound.name}`);
   return (
     <div className={styles.error}>

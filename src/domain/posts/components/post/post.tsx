@@ -18,7 +18,7 @@ const Post = ({
   onPostClick,
   children,
   helloMessage,
-}: PostProps) => {
+}: PostProps): JSX.Element => {
   console.log(`${helloMessage} ${Post.name}`);
   return (
     <div

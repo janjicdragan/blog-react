@@ -1,7 +1,12 @@
 import { User } from '../../posts/types/interfaces';
 import { useUsers } from '../context/usersContext';
 
-export const useUsersData = () => {
+type UseUsersData = {
+  getUserById: (userId: number) => User | undefined;
+  filterUsersByName: (userName: string) => User[];
+};
+
+export const useUsersData = (): UseUsersData => {
   const { users } = useUsers();
 
   const getUserById = (userId: number): User | undefined => {

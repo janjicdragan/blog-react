@@ -1,6 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 
-export function useDebounce<T>(delay: number = 300) {
+export function useDebounce<T>(delay: number = 300): {
+  debounce: (callback: (value: T) => void, value: T) => void;
+} {
   const [timer, setTimer] = useState<number | undefined>();
 
   const debounce = useCallback(

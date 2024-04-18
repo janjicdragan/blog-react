@@ -7,7 +7,7 @@ import { SharedProps } from '../shared/types/interfaces';
 
 interface GlobalRouterProps extends SharedProps {}
 
-const GlobalRouter = ({ helloMessage }: GlobalRouterProps) => {
+const GlobalRouter = ({ helloMessage }: GlobalRouterProps): JSX.Element => {
   console.log(`${helloMessage} ${GlobalRouter.name}`);
   return (
     <BrowserRouter>

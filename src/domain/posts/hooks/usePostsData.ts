@@ -5,9 +5,22 @@ import { usePagination } from '../../../shared/components/Pagination/hooks/usePa
 import { useUsersData } from '../../users/hooks/useUsersData';
 import { useDebounce } from '../../../shared/hooks/useDebounce';
 
+type UsePostsData = {
+  posts: Post[];
+  isLoading: boolean;
+  error: string | undefined;
+  isFiltering: boolean;
+  clearFiltering: () => Promise<void>;
+  currentPage: number;
+  getFirstPostsPage: () => Promise<void>;
+  getNextPostsPage: () => Promise<void>;
+  getPreviousPostsPage: () => Promise<void>;
+  debouncedFilterPostsByUserName: (userName: string) => void;
+};
+
 type ErrorHandlerCallback = (param?: string) => void;
 
-export const usePostsData = () => {
+export const usePostsData = (): UsePostsData => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();

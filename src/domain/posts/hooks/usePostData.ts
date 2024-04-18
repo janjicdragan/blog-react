@@ -4,7 +4,13 @@ import { PostsService } from '../service/posts.service';
 import { useParams } from 'react-router-dom';
 import { convertToNumber } from '../../../shared/utlis';
 
-export const usePostData = () => {
+type UsePostsData = {
+  post: Post | undefined;
+  isLoading: boolean;
+  error: string | undefined;
+};
+
+export const usePostData = (): UsePostsData => {
   const { postId } = useParams<{ postId?: string }>();
   const [post, setPost] = useState<Post>();
   const [isLoading, setIsLoading] = useState<boolean>(false);

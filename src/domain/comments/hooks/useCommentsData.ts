@@ -2,7 +2,16 @@ import { useEffect, useState } from 'react';
 import { Comment } from '../../posts/types/interfaces';
 import { CommentsService } from '../service/comments.service';
 
-export const useCommentsData = (postId: number, showAllComments: boolean) => {
+type UsePostsData = {
+  comments: Comment[];
+  isLoading: boolean;
+  error: string | undefined;
+};
+
+export const useCommentsData = (
+  postId: number,
+  showAllComments: boolean,
+): UsePostsData => {
   const [comments, setComments] = useState<Comment[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>();
@@ -10,7 +19,7 @@ export const useCommentsData = (postId: number, showAllComments: boolean) => {
   const getCommentsByPostId = async (
     postId: number,
     showAllComments: boolean,
-  ) => {
+  ): Promise<void> => {
     setIsLoading(true);
     try {
       const comments = showAllComments

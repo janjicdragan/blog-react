@@ -22,7 +22,7 @@ const Comments = lazy(
 
 interface PostsListProps extends SharedProps {}
 
-const PostsList = ({ helloMessage }: PostsListProps) => {
+const PostsList = ({ helloMessage }: PostsListProps): JSX.Element => {
   const {
     posts,
     isLoading,
@@ -61,7 +61,7 @@ const PostsList = ({ helloMessage }: PostsListProps) => {
     );
   }
 
-  const renderPosts = () => {
+  const renderPosts = (): JSX.Element | JSX.Element[] => {
     if (posts.length === 0 && isFiltering)
       return (
         <div className={styles.error}>

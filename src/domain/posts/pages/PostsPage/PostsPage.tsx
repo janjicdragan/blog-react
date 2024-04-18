@@ -4,7 +4,7 @@ import styles from './PostsPage.module.css';
 
 interface PostsPageProps extends SharedProps {}
 
-const PostsPage = ({ helloMessage }: PostsPageProps) => {
+const PostsPage = ({ helloMessage }: PostsPageProps): JSX.Element => {
   console.log(`${helloMessage} ${PostsPage.name}`);
   return (
     <div className={styles.postsLayout}>

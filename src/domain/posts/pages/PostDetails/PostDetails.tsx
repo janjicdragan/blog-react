@@ -15,7 +15,7 @@ const Comments = lazy(
 
 interface PostDetails extends SharedProps {}
 
-const PostDetails = ({ helloMessage }: PostDetails) => {
+const PostDetails = ({ helloMessage }: PostDetails): JSX.Element => {
   const { post, isLoading, error } = usePostData();
   const { getUserById } = useUsersData();
   console.log(`${helloMessage} ${PostDetails.name}`);

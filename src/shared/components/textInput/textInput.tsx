@@ -13,7 +13,7 @@ const TextInput = ({
   onClearBtnClick,
   placeholder,
   helloMessage,
-}: InputProps) => {
+}: InputProps): JSX.Element => {
   const [inputValue, setInputValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

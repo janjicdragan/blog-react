@@ -21,7 +21,7 @@ interface UserProviderProps extends SharedProps {
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
 
-export function useUsers() {
+export function useUsers(): UserContextType {
   const context = useContext(UserContext);
   if (context === undefined) {
     throw new Error('useUsers must be used within a UserProvider');
@@ -29,7 +29,10 @@ export function useUsers() {
   return context;
 }
 
-export function UserProvider({ children, helloMessage }: UserProviderProps) {
+export function UserProvider({
+  children,
+  helloMessage,
+}: UserProviderProps): JSX.Element {
   const [users, setUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);

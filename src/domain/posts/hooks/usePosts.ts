@@ -1,6 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 
-export const usePosts = () => {
+type UsePosts = {
+  onPostClick: (event: React.MouseEvent<HTMLDivElement>) => void;
+};
+
+export const usePosts = (): UsePosts => {
   const navigate = useNavigate();
 
   const onPostClick = (event: React.MouseEvent<HTMLDivElement>) => {

@@ -2,7 +2,7 @@ import { UserProvider } from './domain/users/context/usersContext';
 import GlobalRouter from './router/Router';
 import './App.css';
 
-function App() {
+function App(): JSX.Element {
   const helloMessage: string = 'Hello from';
   console.log(`${helloMessage} ${App.name}`);
   return (

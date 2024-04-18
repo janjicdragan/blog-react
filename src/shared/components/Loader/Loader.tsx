@@ -1,6 +1,6 @@
 import styles from './Loader.module.css';
 
-const Loader = () => {
+const Loader = (): JSX.Element => {
   return <div className={styles.loader}></div>;
 };
 

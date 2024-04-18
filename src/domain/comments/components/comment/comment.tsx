@@ -7,7 +7,7 @@ interface CommentProps extends SharedProps {
   body: string;
 }
 
-const Comment = ({ email, body, helloMessage }: CommentProps) => {
+const Comment = ({ email, body, helloMessage }: CommentProps): JSX.Element => {
   console.log(`${helloMessage} ${Comment.name}`);
   return (
     <div className={styles.commentContainer}>

@@ -18,7 +18,7 @@ const Comments = ({
   associatedPostId,
   showAllComments,
   helloMessage,
-}: CommentsProps) => {
+}: CommentsProps): JSX.Element => {
   const { comments, isLoading, error } = useCommentsData(
     associatedPostId,
     showAllComments,

@@ -14,7 +14,7 @@ const Pagination = ({
   isPrevBtnDisabled,
   isNextBtnDisabled,
   helloMessage,
-}: PaginationProps) => {
+}: PaginationProps): JSX.Element => {
   console.log(`${helloMessage} ${Pagination.name}`);
   return (
     <div className={styles.pagination}>
