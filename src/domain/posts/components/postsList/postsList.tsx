@@ -1,10 +1,10 @@
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostsData } from '../../hooks/usePostsData';
 import { usePosts } from '../../hooks/usePosts';
-import { SharedProps } from '../../types/interfaces';
 import styles from './PostsList.module.css';
 import Loader from '../../../../shared/components/Loader/Loader';
 import { lazy } from 'react';
+import { SharedProps } from '../../../../shared/types/interfaces';
 
 const ErrorComponent = lazy(
   () => import('../../../../shared/components/Error/ErrorComponent'),

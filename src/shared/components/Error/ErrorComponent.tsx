@@ -1,4 +1,4 @@
-import { SharedProps } from '../../../domain/posts/types/interfaces';
+import { SharedProps } from '../../types/interfaces';
 import styles from './ErrorComponent.module.css';
 
 interface ErrorComponentProps extends SharedProps {

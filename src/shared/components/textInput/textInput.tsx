@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styles from './TextInput.module.css';
-import { SharedProps } from '../../../domain/posts/types/interfaces';
+import { SharedProps } from '../../types/interfaces';
 
 interface InputProps extends SharedProps {
   onInputChange: (value: string) => void;

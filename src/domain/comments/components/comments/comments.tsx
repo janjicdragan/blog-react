@@ -1,8 +1,8 @@
 import { lazy } from 'react';
 import Loader from '../../../../shared/components/Loader/Loader';
-import { SharedProps } from '../../../posts/types/interfaces';
 import { useCommentsData } from '../../hooks/useCommentsData';
 import styles from './Comments.module.css';
+import { SharedProps } from '../../../../shared/types/interfaces';
 
 const Comment = lazy(() => import('./../Comment/Comment'));
 const ErrorComponent = lazy(

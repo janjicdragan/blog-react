@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './NotFound.module.css';
-import { SharedProps } from '../../domain/posts/types/interfaces';
+import { SharedProps } from '../types/interfaces';
 
 interface NotFoundPageProps extends SharedProps {}
 

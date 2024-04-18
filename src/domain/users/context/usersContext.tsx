@@ -5,8 +5,9 @@ import {
   useEffect,
   ReactNode,
 } from 'react';
-import { SharedProps, User } from '../../posts/types/interfaces';
+import { User } from '../../posts/types/interfaces';
 import { UsersService } from '../service/users.service';
+import { SharedProps } from '../../../shared/types/interfaces';
 
 interface UserContextType {
   users: User[];

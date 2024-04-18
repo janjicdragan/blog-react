@@ -1,4 +1,4 @@
-import { SharedProps } from '../../../posts/types/interfaces';
+import { SharedProps } from '../../../../shared/types/interfaces';
 import styles from './Comment.module.css';
 
 interface CommentProps extends SharedProps {

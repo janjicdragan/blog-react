@@ -1,4 +1,4 @@
-import { SharedProps } from '../../types/interfaces';
+import { SharedProps } from '../../../../shared/types/interfaces';
 import styles from './Post.module.css';
 
 interface PostProps extends SharedProps {

@@ -2,11 +2,11 @@ import { Link } from 'react-router-dom';
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostData } from '../../hooks/usePostData';
 import { POSTS } from '../../../../router/router.config';
-import { SharedProps } from '../../types/interfaces';
 import ErrorComponent from '../../../../shared/components/Error/ErrorComponent';
 import { lazy } from 'react';
 import Loader from '../../../../shared/components/Loader/Loader';
 import styles from './PostDetails.module.css';
+import { SharedProps } from '../../../../shared/types/interfaces';
 
 const Post = lazy(() => import('../../components/Post/Post'));
 const Comments = lazy(

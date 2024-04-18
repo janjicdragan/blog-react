@@ -3,7 +3,7 @@ import PostsPage from '../domain/posts/pages/PostsPage/PostsPage';
 import PostDetails from '../domain/posts/pages/PostDetails/PostDetails';
 import { INDEX, POSTS, POST } from './router.config';
 import NotFound from '../shared/pages/NotFound';
-import { SharedProps } from '../domain/posts/types/interfaces';
+import { SharedProps } from '../shared/types/interfaces';
 
 interface GlobalRouterProps extends SharedProps {}
 
