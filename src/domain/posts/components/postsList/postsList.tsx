@@ -5,19 +5,20 @@ import styles from './PostsList.module.css';
 import Loader from '../../../../shared/components/Loader/Loader';
 import { lazy } from 'react';
 import { SharedProps } from '../../../../shared/types/interfaces';
+import withSuspense from '../../../../shared/components/withSuspense/withSuspense';
 
-const ErrorComponent = lazy(
-  () => import('../../../../shared/components/Error/ErrorComponent'),
+const ErrorComponent = withSuspense(
+  lazy(() => import('../../../../shared/components/Error/ErrorComponent')),
 );
-const TextInput = lazy(
-  () => import('../../../../shared/components/TextInput/TextInput'),
+const TextInput = withSuspense(
+  lazy(() => import('../../../../shared/components/TextInput/TextInput')),
 );
-const Pagination = lazy(
-  () => import('../../../../shared/components/Pagination/Pagination'),
+const Pagination = withSuspense(
+  lazy(() => import('../../../../shared/components/Pagination/Pagination')),
 );
-const Post = lazy(() => import('../Post/Post'));
-const Comments = lazy(
-  () => import('../../../comments/components/Comments/Comments'),
+const Post = withSuspense(lazy(() => import('../Post/Post')));
+const Comments = withSuspense(
+  lazy(() => import('../../../comments/components/Comments/Comments')),
 );
 
 interface PostsListProps extends SharedProps {}

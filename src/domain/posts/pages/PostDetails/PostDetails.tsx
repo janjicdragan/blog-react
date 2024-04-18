@@ -2,15 +2,18 @@ import { Link } from 'react-router-dom';
 import { useUsersData } from '../../../users/hooks/useUsersData';
 import { usePostData } from '../../hooks/usePostData';
 import { POSTS } from '../../../../router/router.config';
-import ErrorComponent from '../../../../shared/components/Error/ErrorComponent';
 import { lazy } from 'react';
 import Loader from '../../../../shared/components/Loader/Loader';
 import styles from './PostDetails.module.css';
 import { SharedProps } from '../../../../shared/types/interfaces';
+import withSuspense from '../../../../shared/components/withSuspense/withSuspense';
 
-const Post = lazy(() => import('../../components/Post/Post'));
-const Comments = lazy(
-  () => import('../../../comments/components/Comments/Comments'),
+const Post = withSuspense(lazy(() => import('../../components/Post/Post')));
+const Comments = withSuspense(
+  lazy(() => import('../../../comments/components/Comments/Comments')),
+);
+const ErrorComponent = withSuspense(
+  lazy(() => import('../../../../shared/components/Error/ErrorComponent')),
 );
 
 interface PostDetails extends SharedProps {}

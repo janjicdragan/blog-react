@@ -3,10 +3,11 @@ import Loader from '../../../../shared/components/Loader/Loader';
 import { useCommentsData } from '../../hooks/useCommentsData';
 import styles from './Comments.module.css';
 import { SharedProps } from '../../../../shared/types/interfaces';
+import withSuspense from '../../../../shared/components/withSuspense/withSuspense';
 
-const Comment = lazy(() => import('./../Comment/Comment'));
-const ErrorComponent = lazy(
-  () => import('./../../../../shared/components/Error/ErrorComponent'),
+const Comment = withSuspense(lazy(() => import('./../Comment/Comment')));
+const ErrorComponent = withSuspense(
+  lazy(() => import('./../../../../shared/components/Error/ErrorComponent')),
 );
 
 interface CommentsProps extends SharedProps {
