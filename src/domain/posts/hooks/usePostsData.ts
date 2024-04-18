@@ -3,7 +3,7 @@ import { Post } from '../types/interfaces';
 import { PostsService } from '../service/posts.service';
 import { usePagination } from '../../../shared/components/Pagination/hooks/usePagination';
 import { useUsersData } from '../../users/hooks/useUsersData';
-import { useDebounce } from './useDebounce';
+import { useDebounce } from '../../../shared/hooks/useDebounce';
 
 type ErrorHandlerCallback = (param?: string) => void;
 
