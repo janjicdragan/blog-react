@@ -1,0 +1,16 @@
+.commentContainer {
+  padding: 10px;
+  border-radius: 4px;
+  background-color: whitesmoke;
+}
+
+.commentEmail {
+  color: #555;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.commentBody {
+  color: #666;
+  margin-top: 10px;
+}
