@@ -1,8 +1,7 @@
 import { SharedProps } from '../../../../shared/types/interfaces';
 import styles from './Comment.module.css';
 
-interface CommentProps extends SharedProps {
-  name: string;
+export interface CommentProps extends SharedProps {
   email: string;
   body: string;
 }

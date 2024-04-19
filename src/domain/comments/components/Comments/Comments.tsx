@@ -49,7 +49,6 @@ const Comments = ({
             return (
               <Comment
                 key={comment.name}
-                name={comment.name}
                 body={comment.body}
                 email={comment.email}
                 helloMessage={helloMessage}
